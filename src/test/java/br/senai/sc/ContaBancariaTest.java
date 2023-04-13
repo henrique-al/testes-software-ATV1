@@ -64,7 +64,8 @@ public class ContaBancariaTest {
     }
 
     @Test
-    public void taxaJurosTest(){
+    public void getAndSetTaxaJurosTest(){
+        assertEquals(0, contaBancaria.getTaxaJuros());
         contaBancaria.setTaxaJuros(0.1);
         assertEquals(0.1, contaBancaria.getTaxaJuros());
     }
@@ -79,7 +80,12 @@ public class ContaBancariaTest {
     }
 
     @Test
-    public void alterarTitular(){
+    public void getTitularTest(){
+        assertEquals("Fulano", contaBancaria.getTitular());
+    }
+
+    @Test
+    public void alterarTitularTest(){
         assertFalse(contaBancaria.alterarTitular(""));
         assertFalse(contaBancaria.alterarTitular(null));
         contaBancaria.alterarTitular("Beltrano");

@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,18 +14,25 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BibliotecaTest {
 
     private Biblioteca biblioteca;
+    private final Livro livro1 = new Livro("Harry Potter e a pedra filosofal",
+            "J. K. Rowling",
+            "Aventura",
+            1997);
+    private final Livro livro2 = new Livro("Harry Potter e a câmara secreta",
+            "J. K. Rowling",
+            "Aventura",
+            1998);
 
     @BeforeEach
     public void setUp(){
         biblioteca = new Biblioteca("Biblioteca do Fulano");
-        biblioteca.adicionarLivro(new Livro("Harry Potter e a pedra filosofal",
-                "J. K. Rowling",
-                "Aventura",
-                1997));
-        biblioteca.adicionarLivro(new Livro("Harry Potter e a câmara secreta",
-                "J. K. Rowling",
-                "Aventura",
-                1998));
+        biblioteca.adicionarLivro(livro1);
+        biblioteca.adicionarLivro(livro2);
+    }
+
+    @Test
+    public void getLivrosTest(){
+        assertEquals(List.of(livro1, livro2), biblioteca.getLivros());
     }
 
     @Test
@@ -49,8 +55,12 @@ public class BibliotecaTest {
     }
 
     @Test
-    public void nomeTest(){
+    public void getNomeTest(){
         assertEquals("Biblioteca do Fulano", biblioteca.getNome());
+    }
+
+    @Test
+    public void setNomeTest(){
         biblioteca.setNome("Biblioteca municipal");
         assertEquals("Biblioteca municipal", biblioteca.getNome());
     }

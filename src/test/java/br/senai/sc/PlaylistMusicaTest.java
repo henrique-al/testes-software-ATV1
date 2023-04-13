@@ -2,6 +2,7 @@ package br.senai.sc;
 
 import br.senai.sc.model.playlist.Musica;
 import br.senai.sc.model.playlist.PlaylistMusica;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -34,6 +35,15 @@ public class PlaylistMusicaTest {
     public void tamanhoPlaylistTest(){
         playlist.adicionarMusica(new Musica("Titulo 1", "Artista 1", 300));
         assertEquals(1, playlist.getQuantidadeMusicas());
+    }
+
+    @Test
+    public void getMusicasTest(){
+        Musica musica1 = new Musica("Titulo 1", "Artista 1", 300);
+        Musica musica2 = new Musica("Titulo 2", "Artista 2", 300);
+        playlist.adicionarMusica(musica1);
+        playlist.adicionarMusica(musica2);
+        assertEquals(List.of(musica1, musica2), playlist.getMusicas());
     }
 
     @Test
