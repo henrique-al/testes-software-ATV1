@@ -38,15 +38,13 @@ public class BibliotecaTest {
     @Test
     public void addLivroTest(){
         assertFalse(biblioteca.adicionarLivro(null));
+        int tamanhoAnterior = biblioteca.getLivros().size();
         assertTrue(biblioteca.adicionarLivro(new Livro("Harry Potter e o prisioneiro de azkaban",
                 "J. K. Rowling",
                 "Aventura",
                 1999))
         );
-        assertEquals(new Livro("Harry Potter e a ordem da fenix",
-                "J. K. Rowling",
-                "Aventura",
-                2003).getAutor(), biblioteca.getLivros().get(0).getAutor());
+        assertEquals(tamanhoAnterior + 1, biblioteca.getLivros().size());
     }
 
     @Test
